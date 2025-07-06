@@ -32,14 +32,13 @@ function FilmDetail() {
     );
     const addtoWL = await fetch(
       `http://localhost:3000/wishlist?q=${film[0].id}&u=${loginItemLS}`
-    );    
-    setAlert("Added!")
-      const aWLJson = await addtoWL.json()
+    );
+    setAlert("Added!");
+    const aWLJson = await addtoWL.json();
 
-      if(aWLJson[0].AWL_ERROR == "Record Already in wishlist table"){
-        setAlert("Already Added :)")
-      }
-
+    if (aWLJson[0].AWL_ERROR == "Record Already in wishlist table") {
+      setAlert("Already Added :)");
+    }
   };
   const RemoveFromWatchList = async () => {
     const loginItemLS = JSON.parse(
@@ -49,13 +48,13 @@ function FilmDetail() {
       `http://localhost:3000/unwishlist?q=${film[0].id}&u=${loginItemLS}`
     );
 
-    setRAlert("Removed!!")
-    const rmvJson = await rmvtoWL.json()
+    setRAlert("Removed!!");
+    const rmvJson = await rmvtoWL.json();
 
-    console.log(rmvJson[0].UWL_ERROR)
-    if(rmvJson[0].UWL_ERROR == "No Record Found"){
-      setRAlert("Already Removed :(")
-      return
+    console.log(rmvJson[0].UWL_ERROR);
+    if (rmvJson[0].UWL_ERROR == "No Record Found") {
+      setRAlert("Already Removed :(");
+      return;
     }
   };
 
@@ -115,9 +114,7 @@ function FilmDetail() {
             </a>
             <button
               className="find-out detail-card-btn watchlist-btn"
-              onClick={
-                AddtoWatchList
-              }
+              onClick={AddtoWatchList}
             >
               {alert}
             </button>
@@ -127,7 +124,6 @@ function FilmDetail() {
             >
               {Ralert}
             </button>
-            
           </motion.div>
 
           <img src={movie.banner_url} className="detail-image"></img>
